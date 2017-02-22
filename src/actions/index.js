@@ -1,5 +1,4 @@
 /* global fetch */
-
 import emailHelper from '../lib/emailHelper'
 
 export const FETCH_INFOS = 'FETCH_INFOS'
