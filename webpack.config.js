@@ -2,7 +2,7 @@
 
 const merge = require('webpack-merge')
 
-const build = process.env.NODE_ENV === 'production'
+const { production } = require('./config/webpack.vars')
 
 const common = merge(
   require('./config/webpack.base.config'),
@@ -13,11 +13,7 @@ const common = merge(
   require('./config/webpack.copyfiles.config')
 )
 
-if (build) {
-  module.exports = merge(
-    common,
-    require('./config/webpack.prod.config')
-  )
-} else {
-  module.exports = common
-}
+module.exports = merge(
+  common,
+  require(production ? './config/webpack.prod.config' : './config/webpack.config.dev')
+)

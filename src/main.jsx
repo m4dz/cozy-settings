@@ -1,3 +1,5 @@
+/* global cozy */
+
 import 'babel-polyfill'
 
 import './styles/main'
@@ -10,8 +12,6 @@ import thunkMiddleware from 'redux-thunk'
 import createLogger from 'redux-logger'
 import { Router, Route, Redirect, hashHistory } from 'react-router'
 import Polyglot from 'node-polyglot'
-import cozy from 'cozy-client-js'
-import 'cozy-bar'
 
 import en from './locales/en'
 import { I18nProvider } from 'cozy-ui/react/helpers/i18n'
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const root = document.querySelector('[role=application]')
   const data = root.dataset
 
-  cozy.init({
+  cozy.client.init({
     cozyURL: `//${data.cozyDomain}`,
     token: data.token
   })
